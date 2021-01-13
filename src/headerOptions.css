@@ -8,3 +8,7 @@
 .headerOption:hover {
   color: black;
 }
+.headerOptions_title {
+  font-weight: 400;
+  font-size: 12px;
+}

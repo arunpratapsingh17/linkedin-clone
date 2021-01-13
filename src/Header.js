@@ -4,6 +4,9 @@ import SearchIcon from "@material-ui/icons/Search";
 import HeaderOptions from "./HeaderOptions";
 import homeIcon from "@material-ui/icons/Home";
 import PeopleIcon from "@material-ui/icons/People";
+import WorkIcon from "@material-ui/icons/Work";
+import NotificationsIcon from "@material-ui/icons/Notifications";
+import MessageIcon from "@material-ui/icons/Message";
 const Header = () => {
   return (
     <div className="header">
@@ -15,8 +18,15 @@ const Header = () => {
         </div>
       </div>
       <div className="header_right">
-        <HeaderOptions title="home" Icon={homeIcon} />
+        <HeaderOptions title="Home" Icon={homeIcon} />
         <HeaderOptions title="My Network" Icon={PeopleIcon} />
+        <HeaderOptions title="Jobs" Icon={WorkIcon} />
+        <HeaderOptions title="Messages" Icon={MessageIcon} />
+        <HeaderOptions title="Notification" Icon={NotificationsIcon} />
+        <HeaderOptions
+          avatar="https://media-exp1.licdn.com/dms/image/C4E03AQHbGReNnIKuDw/profile-displayphoto-shrink_100_100/0/1601192259417?e=1616025600&v=beta&t=nwxYF3CRRxH4hkADzcQPvIcl_UQI1DNWssOcAErroH4"
+          title="Me"
+        />
       </div>
     </div>
   );

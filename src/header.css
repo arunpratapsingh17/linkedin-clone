@@ -1,5 +1,12 @@
 .header {
   display: flex;
+  justify-content: space-evenly;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+  top: 0;
+  position: sticky;
+  z-index: 999;
 }
 
 .header_search {
@@ -31,4 +38,7 @@
   object-fit: contain;
   height: 40px;
   margin-right: 10px;
+}
+.header_right {
+  display: flex;
 }
