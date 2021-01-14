@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header.js";
 import Sidebar from "./Sidebar.js";
+import "./App.css";
 const App = () => {
   return (
     <div className="app">
