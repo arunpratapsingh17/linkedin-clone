@@ -5,7 +5,10 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebar_top">
-        <img src="" alt="" />
+        <img
+          src="https://miro.medium.com/max/4000/1*QqfEHlLdVVZIaytTsupcbw.jpeg"
+          alt=""
+        />
         <Avatar className="sidebar_avatar" />
         <h2>Arun Pratap Singh</h2>
         <h4>218apsj@gmail.com</h4>
