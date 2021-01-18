@@ -35,8 +35,18 @@
   justify-content: space-between;
 }
 
-.sidebar_stats > p {
+.sidbar_stat > p {
   color: gray;
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 600;
+}
+
+.sidebar_statnumber {
+  font-weight: bold;
+  color: #0a66c2 !important;
+}
+
+.sidebar_stats {
+  padding: 10px;
+  margin-bottom: 10px;
 }
