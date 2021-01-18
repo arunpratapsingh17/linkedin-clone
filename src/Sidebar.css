@@ -28,9 +28,10 @@
   border-top-left-radius: 10px;
 }
 
-.sidebar_stats {
+.sidbar_stat {
   margin-top: 10px;
   display: flex;
+
   justify-content: space-between;
 }
 
