@@ -6,6 +6,7 @@ import InputOption from "./InputOption";
 import SubscriptionsIcon from "@material-ui/icons/Subscriptions";
 import EventNoteIcon from "@material-ui/icons/EventNote";
 import CalenderViewDayIcon from "@material-ui/icons/CalendarViewDay";
+import Post from "./Post";
 const Feed = () => {
   return (
     <div className="feed">
@@ -28,6 +29,11 @@ const Feed = () => {
           />
         </div>
       </div>
+      <Post
+        name="Jatin Singh"
+        description="This is a text"
+        message="Ohhh yess i am loving react"
+      />
     </div>
   );
 };
