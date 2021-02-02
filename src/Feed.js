@@ -8,6 +8,11 @@ import EventNoteIcon from "@material-ui/icons/EventNote";
 import CalenderViewDayIcon from "@material-ui/icons/CalendarViewDay";
 import Post from "./Post";
 const Feed = () => {
+  const [posts, setPosts] = React.useState("");
+  const sendPosts = (e) => {
+    e.preventDefault();
+    setPosts([...posts, e.target.value]);
+  };
   return (
     <div className="feed">
       <div className="feed_inputContainer">
@@ -29,6 +34,9 @@ const Feed = () => {
           />
         </div>
       </div>
+      {posts.map((post) => {
+        <Post />;
+      })}
       <Post
         name="Jatin Singh"
         description="This is a text"
