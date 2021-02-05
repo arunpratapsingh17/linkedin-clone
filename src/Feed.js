@@ -7,20 +7,49 @@ import SubscriptionsIcon from "@material-ui/icons/Subscriptions";
 import EventNoteIcon from "@material-ui/icons/EventNote";
 import CalenderViewDayIcon from "@material-ui/icons/CalendarViewDay";
 import Post from "./Post";
+import firebase from "firebase";
+import { db } from "./firebase";
 const Feed = () => {
-  const [posts, setPosts] = React.useState("");
+  const [posts, setPosts] = React.useState([]);
+  const [input, setInput] = React.useState("");
+  //Adding the post to backend db.
   const sendPosts = (e) => {
     e.preventDefault();
-    setPosts([...posts, e.target.value]);
+    db.collection("posts").add({
+      name: "Arun Pratap Singh",
+      description: "This is the first test post",
+      message: input,
+      photoUrl: "",
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    setInput("");
   };
+
+  React.useEffect(() => {
+    db.collection("posts").onSnapshot((snapshot) =>
+      setPosts(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      )
+    );
+    console.log(posts);
+  }, []);
   return (
     <div className="feed">
       <div className="feed_inputContainer">
         <div className="feed_input">
           <CreateIcon />
           <form>
-            <input type="text" />
-            <button type="submit">Send</button>
+            <input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              type="text"
+            />
+            <button type="submit" onClick={sendPosts}>
+              Send
+            </button>
           </form>
         </div>
         <div className="feed_inputOptions">
@@ -34,14 +63,16 @@ const Feed = () => {
           />
         </div>
       </div>
-      {posts.map((post) => {
-        <Post />;
+      {posts.map(({ id, data: { name, description, message, photoURL } }) => {
+        console.log("UDJWBjbewk jabba");
+        <Post
+          // key={id}
+          name="Nahiiii"
+          description="Rand desciption"
+          message="Rand message"
+          // photoURL={photoURL}
+        />;
       })}
-      <Post
-        name="Jatin Singh"
-        description="This is a text"
-        message="Ohhh yess i am loving react"
-      />
     </div>
   );
 };
