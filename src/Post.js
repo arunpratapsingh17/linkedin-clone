@@ -7,6 +7,7 @@ import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 import SendOutlinedIcon from "@material-ui/icons/SendOutlined";
 import InputOption from "./InputOption";
 const Post = ({ name, description, message, photo }) => {
+  console.log("test");
   return (
     <div className="post">
       <div className="post_Header">

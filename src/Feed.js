@@ -26,14 +26,16 @@ const Feed = () => {
   };
 
   React.useEffect(() => {
-    db.collection("posts").onSnapshot((snapshot) =>
-      setPosts(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          data: doc.data(),
-        }))
-      )
-    );
+    db.collection("posts")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) =>
+        setPosts(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        )
+      );
     console.log(posts);
   }, []);
   return (
@@ -63,16 +65,15 @@ const Feed = () => {
           />
         </div>
       </div>
-      {posts.map(({ id, data: { name, description, message, photoURL } }) => {
-        console.log("UDJWBjbewk jabba");
+      {posts.map(({ id, data: { name, description, message, photoURL } }) => (
         <Post
-          // key={id}
-          name="Nahiiii"
-          description="Rand desciption"
-          message="Rand message"
+          key={id}
+          name={name}
+          description={description}
+          message={message}
           // photoURL={photoURL}
-        />;
-      })}
+        />
+      ))}
     </div>
   );
 };
