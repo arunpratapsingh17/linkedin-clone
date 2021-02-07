@@ -1,6 +1,13 @@
 import React from "react";
+import { auth } from "./firebase";
 import "./Login.css";
 const Login = () => {
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const loginToApp = (e) => {
+    e.preventDefault();
+  };
   const register = () => {};
   return (
     <div className="login">
@@ -13,7 +20,7 @@ const Login = () => {
         <input placeholder="Profile Pic URL" type="text" />
         <input placeholder="Email" type="text" />
         <input placeholder="Password" type="password" />
-        <button type="submit"></button>
+        <button type="submit">SIGN IN</button>
       </form>
       <p>
         Not a Member?
