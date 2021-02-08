@@ -1,14 +1,42 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { login } from "./features/userReducer";
 import { auth } from "./firebase";
 import "./Login.css";
 const Login = () => {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [photoURL, setPhotoURL] = React.useState("");
+  const dispatch = useDispatch();
   const loginToApp = (e) => {
     e.preventDefault();
   };
-  const register = () => {};
+  const register = () => {
+    if (!name) {
+      return alert("Please Enter Your Name");
+    }
+
+    //creating a new user in firebase backend
+    auth.createUserWithEmailAndPassword(email, password).then((userAuth) => {
+      userAuth.user
+        .updateProfile({
+          displayName: name,
+          photoURL: profilePic,
+        })
+        //sending the user details to redux
+        .then(() => {
+          dispatch(
+            login({
+              email: userAuth.user.email,
+              uid: userAuth.user.uid,
+              displayName: name,
+              photoUrl: photoURL,
+            })
+          );
+        });
+    });
+  };
   return (
     <div className="login">
       <img
@@ -16,10 +44,30 @@ const Login = () => {
         alt="Linkedin logo"
       />
       <form>
-        <input placeholder="Full Name" type="text" />
-        <input placeholder="Profile Pic URL" type="text" />
-        <input placeholder="Email" type="text" />
-        <input placeholder="Password" type="password" />
+        <input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Full Name"
+          type="text"
+        />
+        <input
+          value={photoURL}
+          onChange={(e) => setPhotoURL(e.target.value)}
+          placeholder="Profile Pic URL"
+          type="text"
+        />
+        <input
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          type="text"
+        />
+        <input
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          type="password"
+        />
         <button type="submit">SIGN IN</button>
       </form>
       <p>
