@@ -4,6 +4,7 @@ import { login } from "./features/userReducer";
 import { auth } from "./firebase";
 import "./Login.css";
 const Login = () => {
+  // USERAUTH IS A USER TOKEN RETURNED FROM FIREBASE AFTER LOGIN/SIGNUP
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -11,6 +12,16 @@ const Login = () => {
   const dispatch = useDispatch();
   const loginToApp = (e) => {
     e.preventDefault();
+    auth.signInWithEmailAndPassword(email, password).then((userAuth) => {
+      dispatch(
+        login({
+          email: userAuth.user.email,
+          uid: userAuth.user.uid,
+          displayName: userAuth.user.displayName,
+          profileUrl: userAuth.user.profileURL,
+        })
+      );
+    });
   };
   const register = () => {
     if (!name) {

@@ -7,7 +7,15 @@ import PeopleIcon from "@material-ui/icons/People";
 import WorkIcon from "@material-ui/icons/Work";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MessageIcon from "@material-ui/icons/Message";
+import { useDispatch } from "react-redux";
+import { logout } from "./features/userReducer";
+import { auth } from "./firebase";
 const Header = () => {
+  const dispatch = useDispatch();
+  const logoutApp = () => {
+    dispatch(logout());
+    auth.signOut();
+  };
   return (
     <div className="header">
       <div className="header_left">
@@ -24,6 +32,7 @@ const Header = () => {
         <HeaderOptions title="Messages" Icon={MessageIcon} />
         <HeaderOptions title="Notification" Icon={NotificationsIcon} />
         <HeaderOptions
+          onClick={logoutApp}
           avatar="https://media-exp1.licdn.com/dms/image/C4E03AQHbGReNnIKuDw/profile-displayphoto-shrink_100_100/0/1601192259417?e=1616025600&v=beta&t=nwxYF3CRRxH4hkADzcQPvIcl_UQI1DNWssOcAErroH4"
           title="Me"
         />

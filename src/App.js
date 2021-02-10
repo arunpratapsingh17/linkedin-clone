@@ -7,7 +7,7 @@ import Login from "./Login";
 import "./App.css";
 import Feed from "./Feed.js";
 import { useSelector } from "react-redux";
-import { selectUser } from "./features/userReducer.js";
+import { logout, selectUser } from "./features/userReducer.js";
 import { auth } from "./firebase.js";
 
 const App = () => {
@@ -26,7 +26,7 @@ const App = () => {
   return (
     <div className="app">
       <Header />
-      //To let only verified people login
+      {/* To let only verified people login */}
       {!user ? (
         <Login />
       ) : (

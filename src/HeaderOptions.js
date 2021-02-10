@@ -1,9 +1,9 @@
 import { Avatar } from "@material-ui/core";
 import React from "react";
 import "./headerOptions.css";
-const headerOptions = ({ Icon, title, avatar }) => {
+const headerOptions = ({ Icon, title, avatar, onClick }) => {
   return (
-    <div className="headerOption">
+    <div onClick={onClick} className="headerOption">
       {Icon && <Icon className="headerOption_icon" />}
       {avatar && <Avatar className="headerOption_icon" src={avatar} />}
       <h3 className="headerOptions_title">{title}</h3>
