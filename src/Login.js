@@ -18,24 +18,27 @@ const Login = () => {
     }
 
     //creating a new user in firebase backend
-    auth.createUserWithEmailAndPassword(email, password).then((userAuth) => {
-      userAuth.user
-        .updateProfile({
-          displayName: name,
-          photoURL: profilePic,
-        })
-        //sending the user details to redux
-        .then(() => {
-          dispatch(
-            login({
-              email: userAuth.user.email,
-              uid: userAuth.user.uid,
-              displayName: name,
-              photoUrl: photoURL,
-            })
-          );
-        });
-    });
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((userAuth) => {
+        userAuth.user
+          .updateProfile({
+            displayName: name,
+            photoURL: photoURL,
+          })
+          //sending the user details to redux
+          .then(() => {
+            dispatch(
+              login({
+                email: userAuth.user.email,
+                uid: userAuth.user.uid,
+                displayName: name,
+                photoUrl: photoURL,
+              })
+            );
+          });
+      })
+      .catch((error) => alert(error));
   };
   return (
     <div className="login">
